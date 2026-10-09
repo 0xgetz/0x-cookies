@@ -1,0 +1,15 @@
+{
+  "name": "weibo — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://weibo.com/",
+  "success": {
+    "url_regex": "^https://([\\w.]*\\.)?weibo\\.com/(u/)"
+  },
+  "fail": {
+    "url_regex": "weibo\\.com/(login|signup|visitor)"
+  },
+  "captures": [],
+  "retry": 1
+}

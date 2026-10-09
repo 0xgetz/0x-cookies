@@ -1,0 +1,15 @@
+{
+  "name": "dropbox — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.dropbox.com/home",
+  "success": {
+    "url_regex": "^https://(www\\.)?dropbox\\.com/home"
+  },
+  "fail": {
+    "url_regex": "dropbox\\.com/(login|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

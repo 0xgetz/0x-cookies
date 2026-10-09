@@ -1,0 +1,11 @@
+{
+  "name": "Example — cookie session check (browser)",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://httpbin.org/cookies",
+  "success": { "url_regex": "httpbin.org" },
+  "fail":    { "url_regex": "(login|signin|sign-in|auth)" },
+  "captures": [ { "name": "title", "regex": "<title>(.*?)</title>" } ],
+  "retry": 1
+}

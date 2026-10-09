@@ -1,0 +1,15 @@
+{
+  "name": "gemini — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://gemini.google.com/app",
+  "success": {
+    "url_regex": "^https://gemini\\.google\\.com/app"
+  },
+  "fail": {
+    "url_regex": "accounts\\.google\\.com"
+  },
+  "captures": [],
+  "retry": 1
+}

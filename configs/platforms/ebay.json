@@ -1,0 +1,15 @@
+{
+  "name": "ebay — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.ebay.com/mys/home",
+  "success": {
+    "url_regex": "^https://(www\\.)?ebay\\.[\\w.]+/(mys|my)"
+  },
+  "fail": {
+    "url_regex": "ebay\\.[\\w.]+/(signin|login)"
+  },
+  "captures": [],
+  "retry": 1
+}

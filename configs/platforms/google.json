@@ -1,0 +1,17 @@
+{
+  "name": "google — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://myaccount.google.com/",
+  "success": {
+    "url_regex": "^https://(myaccount|accounts|mail|drive)\\.google\\.com/(?!.*signin)",
+    "body_regex": "My\\ Account|Google\\ Account|Sign\\ out"
+  },
+  "fail": {
+    "url_regex": "(accounts\\.google\\.com/(signin|ServiceLogin|AccountChooser|v3/signin)|/signin)",
+    "body_regex": "Sign\\ in|Couldn't\\ find\\ your\\ Google\\ Account"
+  },
+  "captures": [],
+  "retry": 1
+}

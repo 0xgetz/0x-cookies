@@ -1,0 +1,15 @@
+{
+  "name": "soundcloud — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://soundcloud.com/you/library",
+  "success": {
+    "url_regex": "^https://soundcloud\\.com/"
+  },
+  "fail": {
+    "url_regex": "soundcloud\\.com/(signin|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

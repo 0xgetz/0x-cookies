@@ -1,0 +1,15 @@
+{
+  "name": "monzo — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://web.monzo.com/",
+  "success": {
+    "url_regex": "^https://web\\.monzo\\.com/"
+  },
+  "fail": {
+    "url_regex": "auth\\.monzo\\.com"
+  },
+  "captures": [],
+  "retry": 1
+}

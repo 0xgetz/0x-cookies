@@ -1,0 +1,15 @@
+{
+  "name": "sendgrid — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://app.sendgrid.com/",
+  "success": {
+    "url_regex": "^https://app\\.sendgrid\\.com/(settings)"
+  },
+  "fail": {
+    "url_regex": "sendgrid\\.com/(login|signin)"
+  },
+  "captures": [],
+  "retry": 1
+}

@@ -1,0 +1,15 @@
+{
+  "name": "vimeo — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://vimeo.com/settings",
+  "success": {
+    "url_regex": "^https://vimeo\\.com/(settings|manage|home)"
+  },
+  "fail": {
+    "url_regex": "vimeo\\.com/(log_in|join)"
+  },
+  "captures": [],
+  "retry": 1
+}

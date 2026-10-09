@@ -1,0 +1,15 @@
+{
+  "name": "mailru — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://e.mail.ru/inbox/",
+  "success": {
+    "url_regex": "^https://(e\\.)?mail\\.ru/"
+  },
+  "fail": {
+    "url_regex": "mail\\.ru/(login|signin)"
+  },
+  "captures": [],
+  "retry": 1
+}

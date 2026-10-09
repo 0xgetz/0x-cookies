@@ -1,0 +1,15 @@
+{
+  "name": "substack — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://substack.com/",
+  "success": {
+    "url_regex": "^https://([\\w.]*\\.)?substack\\.com/"
+  },
+  "fail": {
+    "url_regex": "substack\\.com/(signin|signup|login)"
+  },
+  "captures": [],
+  "retry": 1
+}

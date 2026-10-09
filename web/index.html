@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>0x Cookies — Control Panel</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍪</text></svg>" />
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = { theme: { extend: {
+    fontFamily: { sans:['Inter','system-ui','sans-serif'], mono:['JetBrains Mono','monospace'] },
+    colors: { ink:'#07070b', mint:'#34e5b0', violet:'#8b7cf6', amber:'#f5b642' }
+  }}}
+</script>
+<style>
+  :root{color-scheme:dark}
+  body{background:radial-gradient(900px 500px at 10% -10%,rgba(52,229,176,.08),transparent 60%),radial-gradient(800px 500px at 95% 0%,rgba(139,124,246,.10),transparent 60%),#07070b}
+  .glass{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.08)}
+  .grad-text{background:linear-gradient(100deg,#34e5b0,#8b7cf6 60%,#f5b642);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tab.active{background:rgba(52,229,176,.12);color:#34e5b0;border-color:rgba(52,229,176,.4)}
+  .pulse{animation:p 2s infinite}@keyframes p{0%,100%{opacity:.4}50%{opacity:1}}
+  ::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:#0b0b11}::-webkit-scrollbar-thumb{background:#262630;border-radius:8px}
+  .bar{transition:width .4s ease}
+  input,textarea,select{background:rgba(255,255,255,.04)}
+</style>
+</head>
+<body class="font-sans text-slate-200 antialiased min-h-screen">
+
+<header class="sticky top-0 z-40 border-b border-white/5 bg-ink/80 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
+    <div class="flex items-center gap-3">
+      <span class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-mint/20 to-violet/20 border border-white/10 text-xl">🍪</span>
+      <div class="leading-tight">
+        <div class="text-[16px] font-extrabold">0x<span class="grad-text">Cookies</span> <span class="text-slate-500 font-normal text-xs">control panel</span></div>
+        <div class="text-[11px] text-slate-500 font-mono">openbullet-style runner</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <span id="connDot" class="flex items-center gap-1.5 text-xs text-slate-400"><span class="pulse h-2 w-2 rounded-full bg-slate-500" id="connPulse"></span><span id="connText">connecting…</span></span>
+      <a href="https://github.com/0xgetz" target="_blank" class="text-xs text-slate-400 hover:text-white transition font-mono">github/0xgetz</a>
+      <a href="https://t.me/xiyyyyz" target="_blank" class="text-xs text-[#8fd6ff] hover:text-[#bce6ff] transition font-mono">@xiyyyyz</a>
+    </div>
+  </div>
+</header>
+
+<main class="mx-auto max-w-7xl px-5 py-6">
+  <!-- stats row -->
+  <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+    <div class="glass rounded-xl px-4 py-3"><div class="text-[11px] uppercase tracking-wider text-slate-500">Tested</div><div id="sTested" class="mt-1 text-2xl font-extrabold">0</div></div>
+    <div class="glass rounded-xl px-4 py-3"><div class="text-[11px] uppercase tracking-wider text-mint">Hits (valid)</div><div id="sValid" class="mt-1 text-2xl font-extrabold text-mint">0</div></div>
+    <div class="glass rounded-xl px-4 py-3"><div class="text-[11px] uppercase tracking-wider text-slate-400">Invalid</div><div id="sInvalid" class="mt-1 text-2xl font-extrabold text-slate-300">0</div></div>
+    <div class="glass rounded-xl px-4 py-3"><div class="text-[11px] uppercase tracking-wider text-red-400">Errors</div><div id="sErrors" class="mt-1 text-2xl font-extrabold text-red-400">0</div></div>
+    <div class="glass rounded-xl px-4 py-3"><div class="text-[11px] uppercase tracking-wider text-violet">CPM</div><div id="sCpm" class="mt-1 text-2xl font-extrabold text-violet">0</div></div>
+    <div class="glass rounded-xl px-4 py-3"><div class="text-[11px] uppercase tracking-wider text-amber">Progress</div><div id="sProg" class="mt-1 text-2xl font-extrabold text-amber">0%</div></div>
+  </div>
+  <div class="mt-3 h-2 overflow-hidden rounded-full bg-white/5">
+    <div id="progBar" class="bar h-full rounded-full bg-gradient-to-r from-mint to-violet" style="width:0%"></div>
+  </div>
+
+  <div class="mt-5 grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
+    <!-- left: control tabs -->
+    <div class="glass rounded-2xl p-5">
+      <div class="flex flex-wrap gap-2">
+        <button data-tab="inputs" class="tab active rounded-lg border border-white/10 px-3.5 py-2 text-sm font-semibold transition">1. Inputs</button>
+        <button data-tab="config" class="tab rounded-lg border border-white/10 px-3.5 py-2 text-sm font-semibold transition">2. Config</button>
+        <button data-tab="proxies" class="tab rounded-lg border border-white/10 px-3.5 py-2 text-sm font-semibold transition">3. Proxies</button>
+        <button data-tab="options" class="tab rounded-lg border border-white/10 px-3.5 py-2 text-sm font-semibold transition">4. Options</button>
+      </div>
+
+      <!-- inputs -->
+      <div data-panel="inputs" class="mt-4">
+        <p class="text-sm text-slate-400">Satu input per baris. Untuk config <code class="text-mint">userpass</code> gunakan <code>user:pass</code>; untuk <code>cookie</code> tempel cookie; format lain: satu baris bebas.</p>
+        <textarea id="inpInputs" rows="8" placeholder="user1:pass1&#10;user2:pass2" class="mt-3 w-full rounded-xl border border-white/10 px-3 py-2.5 font-mono text-sm outline-none focus:border-mint/40"></textarea>
+        <div class="mt-2 flex flex-wrap items-center gap-2">
+          <input id="inpFile" type="file" accept=".txt,.csv" class="text-xs text-slate-400 file:mr-2 file:rounded-md file:border-0 file:bg-white/10 file:px-3 file:py-1.5 file:text-slate-200 file:text-xs" />
+          <button id="btnLoadInputs" class="rounded-lg bg-mint/15 border border-mint/30 px-3.5 py-2 text-sm font-semibold text-mint hover:bg-mint/25 transition">Load inputs</button>
+          <span id="inpCount" class="text-xs text-slate-500">0 loaded</span>
+        </div>
+      </div>
+
+      <!-- config -->
+      <div data-panel="config" class="mt-4 hidden">
+        <p class="text-sm text-slate-400">Config bergaya OpenBullet (JSON). Tipe <code class="text-mint">http</code> untuk request langsung, <code class="text-mint">browser</code> untuk memuat halaman di Chromium (akurat untuk situs yang selalu balas 200).</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <button data-cfg="http" class="cfgpreset rounded-lg border border-white/12 bg-white/5 px-3 py-1.5 text-xs font-semibold hover:bg-white/10">Preset: HTTP login</button>
+          <button data-cfg="browser" class="cfgpreset rounded-lg border border-white/12 bg-white/5 px-3 py-1.5 text-xs font-semibold hover:bg-white/10">Preset: Browser cookie</button>
+        </div>
+        <textarea id="inpConfig" rows="12" class="mt-3 w-full rounded-xl border border-white/10 px-3 py-2.5 font-mono text-xs outline-none focus:border-mint/40"></textarea>
+        <div class="mt-2 flex items-center gap-2">
+          <button id="btnLoadConfig" class="rounded-lg bg-violet/15 border border-violet/30 px-3.5 py-2 text-sm font-semibold text-violet hover:bg-violet/25 transition">Load config</button>
+          <span id="cfgStatus" class="text-xs text-slate-500">no config</span>
+        </div>
+      </div>
+
+      <!-- proxies -->
+      <div data-panel="proxies" class="mt-4 hidden">
+        <p class="text-sm text-slate-400">Satu proxy per baris. Format: <code>host:port</code>, <code>user:pass@host:port</code>, <code>scheme://host:port</code> (http/https/socks4/socks5). Rotasi + ban otomatis saat gagal.</p>
+        <textarea id="inpProxies" rows="8" placeholder="203.0.113.10:8080&#10;socks5://user:pass@198.51.100.5:1080" class="mt-3 w-full rounded-xl border border-white/10 px-3 py-2.5 font-mono text-sm outline-none focus:border-mint/40"></textarea>
+        <div class="mt-2 flex flex-wrap items-center gap-2">
+          <input id="proxFile" type="file" accept=".txt" class="text-xs text-slate-400 file:mr-2 file:rounded-md file:border-0 file:bg-white/10 file:px-3 file:py-1.5 file:text-slate-200 file:text-xs" />
+          <button id="btnLoadProxies" class="rounded-lg bg-amber/15 border border-amber/30 px-3.5 py-2 text-sm font-semibold text-amber hover:bg-amber/25 transition">Load proxies</button>
+          <span id="proxStatus" class="text-xs text-slate-500">0 proxies</span>
+        </div>
+      </div>
+
+      <!-- options -->
+      <div data-panel="options" class="mt-4 hidden">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-xs uppercase tracking-wider text-slate-500">Workers</span>
+            <input id="optWorkers" type="number" value="4" min="1" max="200" class="mt-1 w-full rounded-lg border border-white/10 px-3 py-2 text-sm"></label>
+          <label class="block"><span class="text-xs uppercase tracking-wider text-slate-500">Timeout (detik)</span>
+            <input id="optTimeout" type="number" value="30" min="5" max="120" class="mt-1 w-full rounded-lg border border-white/10 px-3 py-2 text-sm"></label>
+          <label class="block"><span class="text-xs uppercase tracking-wider text-slate-500">Retry per input</span>
+            <input id="optRetry" type="number" value="1" min="0" max="10" class="mt-1 w-full rounded-lg border border-white/10 px-3 py-2 text-sm"></label>
+          <label class="block"><span class="text-xs uppercase tracking-wider text-slate-500">Ban proxy (detik)</span>
+            <input id="optBan" type="number" value="60" min="5" max="600" class="mt-1 w-full rounded-lg border border-white/10 px-3 py-2 text-sm"></label>
+        </div>
+        <label class="mt-4 flex items-center gap-2 text-sm text-slate-300"><input id="optHeadless" type="checkbox" class="accent-mint" checked> Headless Chromium (matikan untuk melihat browser di VPS/desktop)</label>
+      </div>
+
+      <!-- action bar -->
+      <div class="mt-5 flex flex-wrap items-center gap-2 border-t border-white/5 pt-4">
+        <button id="btnStart" class="rounded-lg bg-gradient-to-r from-mint to-violet px-5 py-2.5 text-sm font-bold text-ink hover:brightness-110 transition">▶ Start</button>
+        <button id="btnPause" class="rounded-lg border border-white/12 bg-white/5 px-4 py-2.5 text-sm font-semibold hover:bg-white/10 transition">⏸ Pause</button>
+        <button id="btnResume" class="rounded-lg border border-white/12 bg-white/5 px-4 py-2.5 text-sm font-semibold hover:bg-white/10 transition">⏵ Resume</button>
+        <button id="btnStop" class="rounded-lg border border-red-400/30 bg-red-400/10 px-4 py-2.5 text-sm font-semibold text-red-300 hover:bg-red-400/20 transition">⏹ Stop</button>
+        <span id="jobStatus" class="ml-auto text-xs font-mono text-slate-500">idle</span>
+      </div>
+    </div>
+
+    <!-- right: live log + hits -->
+    <div class="space-y-5">
+      <div class="glass rounded-2xl p-5">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-slate-200">Live log</h3>
+          <button id="btnClearLog" class="text-xs text-slate-500 hover:text-slate-300 transition">clear</button>
+        </div>
+        <div id="logBox" class="mt-3 h-52 overflow-auto rounded-xl border border-white/8 bg-black/30 p-3 font-mono text-[11.5px] leading-relaxed text-slate-400"></div>
+      </div>
+      <div class="glass rounded-2xl p-5">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-mint">Hits</h3>
+          <div class="flex gap-2">
+            <button id="btnHits" class="text-xs text-slate-500 hover:text-slate-300 transition">refresh</button>
+            <a id="dlHits" href="/api/hits" download="hits.txt" class="text-xs text-mint hover:text-white transition">download</a>
+          </div>
+        </div>
+        <div id="hitsBox" class="mt-3 h-40 overflow-auto rounded-xl border border-white/8 bg-black/30 p-3 font-mono text-[11.5px] leading-relaxed text-mint"></div>
+        <a id="dlAll" href="/api/all" download="all.txt" class="mt-2 inline-block text-xs text-slate-500 hover:text-slate-300 transition">download all results (.txt)</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="mt-6 text-center text-xs text-slate-600">0x Cookies control panel · jalankan di localhost atau VPS · gunakan hanya pada akun milikmu sendiri.</p>
+</main>
+
+<script>
+const API = '';
+const PRESETS = {
+  http: JSON.stringify({
+    name:"HTTP login check", author:"0x Cookies", type:"http", input_format:"userpass",
+    request:{ url:"https://example.com/api/login", method:"POST",
+      headers:{"Content-Type":"application/json","User-Agent":"Mozilla/5.0"},
+      body:'{"user":"<USER>","pass":"<PASS>"}' },
+    success:{ status:[200], body_regex:'"token"\\s*:' },
+    fail:{ body_regex:"invalid|incorrect|wrong password" },
+    captures:[{ name:"token", regex:'"token"\\s*:\\s*"([^"]+)"' }],
+    retry:1
+  }, null, 2),
+  browser: JSON.stringify({
+    name:"Browser cookie check", author:"0x Cookies", type:"browser", input_format:"line",
+    url:"https://example.com/dashboard",
+    success:{ url_regex:"example\\.com/(dashboard|home)" },
+    fail:{ url_regex:"(login|signin|sign-in|auth)" },
+    captures:[], retry:1
+  }, null, 2)
+};
+
+let ws = null;
+function connect(){
+  const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+  const wsPort = (+location.port || (location.protocol==='https:'?443:80)) + 1;
+  const url = `${proto}://${location.hostname}:${wsPort}/`;
+  try {
+    ws = new WebSocket(url);
+    ws.onopen = ()=>{ setConn(true); stopPolling(); };
+    ws.onclose = ()=>{ setConn(false); startPolling(); setTimeout(connect, 3000); };
+    ws.onerror = ()=>{ setConn(false); startPolling(); };
+    ws.onmessage = (ev)=>{ try{ const d=JSON.parse(ev.data); render(d); }catch(e){} };
+  } catch(e) { setConn(false); startPolling(); setTimeout(connect, 3000); }
+}
+function setConn(ok){
+  document.getElementById('connPulse').className = 'h-2 w-2 rounded-full ' + (ok?'bg-mint pulse':'bg-amber');
+  document.getElementById('connText').textContent = ok ? 'live' : 'polling';
+}
+async function poll(){
+  fetch(API + '/api/stats').then(r=>r.json()).then(render).catch(()=>{});
+}
+let pollTimer = null;
+function startPolling(){ if(!pollTimer) pollTimer = setInterval(poll, 1000); poll(); }
+function stopPolling(){ if(pollTimer){ clearInterval(pollTimer); pollTimer=null; } }
+
+function render(d){
+  const s = d.stats || {};
+  const set=(id,v)=>{const e=document.getElementById(id); if(e) e.textContent=v;};
+  set('sTested', s.tested||0);
+  set('sValid', s.valid||0);
+  set('sInvalid', s.invalid||0);
+  set('sErrors', s.errors||0);
+  set('sCpm', s.cpm||0);
+  set('sProg', (s.progress||0)+'%');
+  document.getElementById('progBar').style.width = (s.progress||0)+'%';
+  const running = s.running;
+  document.getElementById('jobStatus').textContent = running ? (s.paused?'paused':'running') : (s.tested? 'finished':'idle');
+  document.getElementById('jobStatus').className = 'ml-auto text-xs font-mono ' + (running?(s.paused?'text-amber':'text-mint'):'text-slate-500');
+  if(d.log){
+    const box = document.getElementById('logBox');
+    box.innerHTML = d.log.map(l=>`<div>${escapeHtml(l)}</div>`).join('');
+    box.scrollTop = box.scrollHeight;
+  }
+}
+function escapeHtml(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+/* tabs */
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active', x===b));
+  document.querySelectorAll('[data-panel]').forEach(p=>p.classList.toggle('hidden', p.dataset.panel!==b.dataset.tab));
+}));
+document.querySelectorAll('.cfgpreset').forEach(b=>b.addEventListener('click',()=>{
+  document.getElementById('inpConfig').value = PRESETS[b.dataset.cfg];
+}));
+document.getElementById('inpConfig').value = PRESETS.browser;
+
+/* inputs */
+document.getElementById('inpFile').addEventListener('change', async (e)=>{
+  const f=e.target.files[0]; if(!f) return;
+  document.getElementById('inpInputs').value = await f.text();
+});
+document.getElementById('btnLoadInputs').addEventListener('click', async ()=>{
+  const text = document.getElementById('inpInputs').value;
+  const r = await fetch(API+'/api/inputs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
+  const d = await r.json();
+  document.getElementById('inpCount').textContent = (d.count||0)+' loaded';
+});
+document.getElementById('btnLoadConfig').addEventListener('click', async ()=>{
+  const raw = document.getElementById('inpConfig').value;
+  const r = await fetch(API+'/api/config',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({raw})});
+  const d = await r.json();
+  const st=document.getElementById('cfgStatus');
+  if(d.ok){ st.textContent='✓ '+d.name+' ('+d.type+')'; st.className='text-xs text-mint'; }
+  else { st.textContent='✗ '+(Array.isArray(d.error)?d.error.join('; '):d.error); st.className='text-xs text-red-400'; }
+});
+document.getElementById('proxFile').addEventListener('change', async (e)=>{
+  const f=e.target.files[0]; if(!f) return;
+  document.getElementById('inpProxies').value = await f.text();
+});
+document.getElementById('btnLoadProxies').addEventListener('click', async ()=>{
+  const text = document.getElementById('inpProxies').value;
+  const r = await fetch(API+'/api/proxies',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
+  const d = await r.json();
+  document.getElementById('proxStatus').textContent = `${d.valid} valid, ${d.invalid} invalid`;
+});
+
+/* controls */
+document.getElementById('btnStart').addEventListener('click', async ()=>{
+  const opts = {
+    workers: +document.getElementById('optWorkers').value,
+    timeout: +document.getElementById('optTimeout').value,
+    retry: +document.getElementById('optRetry').value,
+    ban_seconds: +document.getElementById('optBan').value,
+    headless: document.getElementById('optHeadless').checked,
+  };
+  const r = await fetch(API+'/api/start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(opts)});
+  const d = await r.json();
+  if(d.error) alert(d.error);
+});
+document.getElementById('btnStop').addEventListener('click', ()=>fetch(API+'/api/stop',{method:'POST'}));
+document.getElementById('btnPause').addEventListener('click', ()=>fetch(API+'/api/pause',{method:'POST'}));
+document.getElementById('btnResume').addEventListener('click', ()=>fetch(API+'/api/resume',{method:'POST'}));
+document.getElementById('btnClearLog').addEventListener('click',()=>{document.getElementById('logBox').innerHTML='';});
+document.getElementById('btnHits').addEventListener('click', async ()=>{
+  const t = await (await fetch(API+'/api/hits')).text();
+  document.getElementById('hitsBox').innerHTML = t ? t.split('\n').filter(Boolean).map(l=>`<div>${escapeHtml(l)}</div>`).join('') : '<span class="text-slate-600">// belum ada hits</span>';
+});
+
+/* boot */
+connect();
+startPolling();
+poll();
+document.getElementById('btnHits').click();
+</script>
+</body>
+</html>

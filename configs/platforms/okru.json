@@ -1,0 +1,15 @@
+{
+  "name": "okru — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://ok.ru/",
+  "success": {
+    "url_regex": "^https://ok\\.ru/"
+  },
+  "fail": {
+    "url_regex": "ok\\.ru/(login|join)"
+  },
+  "captures": [],
+  "retry": 1
+}

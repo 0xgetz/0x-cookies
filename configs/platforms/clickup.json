@@ -1,0 +1,15 @@
+{
+  "name": "clickup — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://app.clickup.com/",
+  "success": {
+    "url_regex": "^https://app\\.clickup\\.com/"
+  },
+  "fail": {
+    "url_regex": "clickup\\.com/(login|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

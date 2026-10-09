@@ -1,0 +1,15 @@
+{
+  "name": "slack — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://app.slack.com/client",
+  "success": {
+    "url_regex": "^https://(app\\.)?slack\\.com/"
+  },
+  "fail": {
+    "url_regex": "slack\\.com/(signin|workspace-signin)"
+  },
+  "captures": [],
+  "retry": 1
+}

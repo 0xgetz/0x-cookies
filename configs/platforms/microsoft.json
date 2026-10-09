@@ -1,0 +1,17 @@
+{
+  "name": "microsoft — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://outlook.live.com/mail/0/",
+  "success": {
+    "url_regex": "^https://(outlook\\.live\\.com|outlook\\.office\\.com)/",
+    "body_regex": "owa|Outlook|newmail"
+  },
+  "fail": {
+    "url_regex": "(login\\.live\\.com|login\\.microsoftonline\\.com|account\\.microsoft\\.com|www\\.microsoft\\.com|signup\\.live\\.com|/oauth20_authorize)",
+    "body_regex": "Sign\\ in\\ to\\ your\\ account|Sign\\ in\\ to\\ Outlook"
+  },
+  "captures": [],
+  "retry": 1
+}

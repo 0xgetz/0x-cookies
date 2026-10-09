@@ -1,0 +1,15 @@
+{
+  "name": "claude — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://claude.ai/chats",
+  "success": {
+    "url_regex": "^https://(www\\.)?claude\\.ai/(chats|new|project)"
+  },
+  "fail": {
+    "url_regex": "claude\\.ai/(login|logout|api/challenge_redirect)"
+  },
+  "captures": [],
+  "retry": 1
+}

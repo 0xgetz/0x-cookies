@@ -1,0 +1,16 @@
+{
+  "name": "Example — HTTP POST login",
+  "author": "0x Cookies",
+  "type": "http",
+  "input_format": "userpass",
+  "request": {
+    "url": "https://httpbin.org/post",
+    "method": "POST",
+    "headers": { "X-Test": "0xcookies" },
+    "body": "username=<USER>&password=<PASS>"
+  },
+  "success": { "body_regex": "\"username\":\\s*\"<USER>\"", "status": [200] },
+  "fail":    { "body_regex": "invalid" },
+  "captures": [ { "name": "origin", "regex": "\"origin\":\\s*\"([^\"]+)\"" } ],
+  "retry": 1
+}

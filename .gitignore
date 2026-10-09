@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Runtime output
+data/*.txt
+!data/.gitkeep
+hits.txt
+all.txt
+
+# Local Chromium libs (VPS without root)
+third_party/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

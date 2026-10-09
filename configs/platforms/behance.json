@@ -1,0 +1,15 @@
+{
+  "name": "behance — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.behance.net/",
+  "success": {
+    "url_regex": "^https://(www\\.)?behance\\.net/"
+  },
+  "fail": {
+    "url_regex": "behance\\.net/(login|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

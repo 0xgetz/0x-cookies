@@ -1,0 +1,15 @@
+{
+  "name": "binance — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.binance.com/en/my/wallet/account/main",
+  "success": {
+    "url_regex": "^https://(www\\.)?binance\\.(com|us)/"
+  },
+  "fail": {
+    "url_regex": "binance\\.(com|us)/(login|register)"
+  },
+  "captures": [],
+  "retry": 1
+}

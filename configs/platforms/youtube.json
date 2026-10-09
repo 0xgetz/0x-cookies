@@ -1,0 +1,15 @@
+{
+  "name": "youtube — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://studio.youtube.com/",
+  "success": {
+    "url_regex": "^https://(studio\\.)?youtube\\.com/"
+  },
+  "fail": {
+    "url_regex": "accounts\\.google\\.com"
+  },
+  "captures": [],
+  "retry": 1
+}

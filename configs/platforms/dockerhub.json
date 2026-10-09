@@ -1,0 +1,15 @@
+{
+  "name": "dockerhub — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://hub.docker.com/",
+  "success": {
+    "url_regex": "^https://hub\\.docker\\.com/(repositories|settings)"
+  },
+  "fail": {
+    "url_regex": "hub\\.docker\\.com/(login|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

@@ -1,0 +1,15 @@
+{
+  "name": "dribbble — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://dribbble.com/",
+  "success": {
+    "url_regex": "^https://dribbble\\.com/"
+  },
+  "fail": {
+    "url_regex": "dribbble\\.com/(session/new|signup|login)"
+  },
+  "captures": [],
+  "retry": 1
+}

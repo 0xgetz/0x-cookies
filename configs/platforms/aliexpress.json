@@ -1,0 +1,16 @@
+{
+  "name": "aliexpress — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.aliexpress.com/",
+  "success": {
+    "url_regex": "^https://([\\w.]*\\.)?aliexpress\\.[\\w.]+/"
+  },
+  "fail": {
+    "url_regex": "aliexpress\\.[\\w.]+/(login|signin)|login\\.aliexpress",
+    "body_regex": "Sign\\ in|Register|Welcome\\ to\\ AliExpress"
+  },
+  "captures": [],
+  "retry": 1
+}

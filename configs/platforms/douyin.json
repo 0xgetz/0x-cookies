@@ -1,0 +1,15 @@
+{
+  "name": "douyin — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.douyin.com/",
+  "success": {
+    "url_regex": "^https://([\\w.]*\\.)?douyin\\.com/"
+  },
+  "fail": {
+    "url_regex": "douyin\\.com/(login|passport)"
+  },
+  "captures": [],
+  "retry": 1
+}

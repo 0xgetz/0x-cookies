@@ -1,0 +1,15 @@
+{
+  "name": "messenger — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.messenger.com/",
+  "success": {
+    "url_regex": "^https://(www\\.)?messenger\\.com/(t)"
+  },
+  "fail": {
+    "url_regex": "messenger\\.com/(login|checkpoint)"
+  },
+  "captures": [],
+  "retry": 1
+}

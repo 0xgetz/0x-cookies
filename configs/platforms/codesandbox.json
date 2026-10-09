@@ -1,0 +1,15 @@
+{
+  "name": "codesandbox — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://codesandbox.io/dashboard",
+  "success": {
+    "url_regex": "^https://codesandbox\\.io/(dashboard|s)"
+  },
+  "fail": {
+    "url_regex": "codesandbox\\.io/(signin|login)"
+  },
+  "captures": [],
+  "retry": 1
+}

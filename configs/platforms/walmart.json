@@ -1,0 +1,15 @@
+{
+  "name": "walmart — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.walmart.com/account",
+  "success": {
+    "url_regex": "^https://(www\\.)?walmart\\.com/(account)"
+  },
+  "fail": {
+    "url_regex": "walmart\\.com/(account/login|blocked)"
+  },
+  "captures": [],
+  "retry": 1
+}

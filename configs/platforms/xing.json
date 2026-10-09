@@ -1,0 +1,15 @@
+{
+  "name": "xing — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.xing.com/",
+  "success": {
+    "url_regex": "^https://(www\\.)?xing\\.com/"
+  },
+  "fail": {
+    "url_regex": "xing\\.com/(login|signup|logout)"
+  },
+  "captures": [],
+  "retry": 1
+}

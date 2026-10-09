@@ -1,0 +1,15 @@
+{
+  "name": "wix — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.wix.com/dashboard",
+  "success": {
+    "url_regex": "^https://(www\\.)?wix\\.com/(dashboard|my-account)"
+  },
+  "fail": {
+    "url_regex": "wix\\.com/(login|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

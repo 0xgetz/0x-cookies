@@ -1,0 +1,16 @@
+{
+  "name": "facebook — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.facebook.com/settings",
+  "success": {
+    "url_regex": "^https://(www\\.|m\\.|web\\.)?facebook\\.com/(settings|profile|home)"
+  },
+  "fail": {
+    "url_regex": "facebook\\.com/(login|checkpoint|recover)",
+    "body_regex": "Log\\ into\\ Facebook|You\\ must\\ log\\ in"
+  },
+  "captures": [],
+  "retry": 1
+}

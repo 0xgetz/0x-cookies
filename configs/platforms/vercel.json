@@ -1,0 +1,15 @@
+{
+  "name": "vercel — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://vercel.com/dashboard",
+  "success": {
+    "url_regex": "^https://vercel\\.com/"
+  },
+  "fail": {
+    "url_regex": "vercel\\.com/(login|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

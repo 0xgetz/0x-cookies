@@ -1,0 +1,16 @@
+{
+  "name": "codepen — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://codepen.io/dashboard",
+  "success": {
+    "url_regex": "^https://codepen\\.io/(dashboard|pen)"
+  },
+  "fail": {
+    "url_regex": "codepen\\.io/(login|signup)",
+    "body_regex": "Just\\ a\\ moment|Sign\\ Up|Log\\ In"
+  },
+  "captures": [],
+  "retry": 1
+}

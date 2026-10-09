@@ -1,0 +1,15 @@
+{
+  "name": "intercom — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://app.intercom.com/",
+  "success": {
+    "url_regex": "^https://app\\.intercom\\.com/(admins|a)"
+  },
+  "fail": {
+    "url_regex": "app\\.intercom\\.com/admins/sign_in"
+  },
+  "captures": [],
+  "retry": 1
+}

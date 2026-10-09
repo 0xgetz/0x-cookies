@@ -1,0 +1,15 @@
+{
+  "name": "squarespace — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://account.squarespace.com/",
+  "success": {
+    "url_regex": "^https://account\\.squarespace\\.com/"
+  },
+  "fail": {
+    "url_regex": "(login|signin)\\.squarespace\\.com|squarespace\\.com/(login|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

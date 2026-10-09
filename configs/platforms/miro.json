@@ -1,0 +1,15 @@
+{
+  "name": "miro — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://miro.com/app/dashboard/",
+  "success": {
+    "url_regex": "^https://miro\\.com/app/"
+  },
+  "fail": {
+    "url_regex": "miro\\.com/(login|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

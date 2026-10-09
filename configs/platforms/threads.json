@@ -1,0 +1,16 @@
+{
+  "name": "threads — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.threads.com/",
+  "success": {
+    "url_regex": "^https://(www\\.)?threads\\.(com|net)/"
+  },
+  "fail": {
+    "url_regex": "threads\\.(com|net)/(login|signup)",
+    "body_regex": "Log\\ in|Log\\ in\\ with\\ Instagram"
+  },
+  "captures": [],
+  "retry": 1
+}

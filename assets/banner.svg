@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07070b"/>
+      <stop offset="0.5" stop-color="#0a1016"/>
+      <stop offset="1" stop-color="#07070b"/>
+    </linearGradient>
+    <linearGradient id="mint" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#34e5b0"/><stop offset="1" stop-color="#1fbf97"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b7cf6"/><stop offset="1" stop-color="#6b5ce7"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5b642"/><stop offset="1" stop-color="#e39a1e"/>
+    </linearGradient>
+    <linearGradient id="mode" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#34e5b0"/><stop offset="0.55" stop-color="#8b7cf6"/><stop offset="1" stop-color="#f5b642"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="320" fill="url(#bg)"/>
+  <rect y="316" width="1280" height="4" fill="url(#mode)" opacity="0.7"/>
+
+  <!-- emblem -->
+  <g transform="translate(160 160)">
+    <polygon points="0,-108 94,-54 94,54 0,108 -94,54 -94,-54" fill="none" stroke="url(#violet)" stroke-width="7" stroke-linejoin="round" opacity="0.9" filter="url(#glow)"/>
+    <circle r="66" fill="url(#amber)"/>
+    <circle cx="-22" cy="-24" r="11" fill="#3a2410"/>
+    <circle cx="22" cy="-16" r="8" fill="#3a2410"/>
+    <circle cx="-27" cy="20" r="9" fill="#3a2410"/>
+    <circle cx="15" cy="27" r="10" fill="#3a2410"/>
+    <circle cx="33" cy="7" r="6" fill="#3a2410"/>
+  </g>
+
+  <!-- wordmark -->
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="300" y="132" font-size="74" font-weight="800">
+      <tspan fill="#34e5b0">0x</tspan><tspan fill="#e7ecf3">Cookies</tspan>
+    </text>
+    <text x="304" y="178" font-size="24" font-weight="600" fill="#9aa4b2">OpenBullet-style bulk cookie &amp; session checker</text>
+  </g>
+
+  <!-- pills -->
+  <g font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600">
+    <rect x="302" y="206" width="146" height="38" rx="19" fill="#34e5b0" fill-opacity="0.12" stroke="#34e5b0" stroke-opacity="0.4"/>
+    <text x="375" y="231" text-anchor="middle" fill="#34e5b0">real Chromium</text>
+    <rect x="462" y="206" width="122" height="38" rx="19" fill="#8b7cf6" fill-opacity="0.12" stroke="#8b7cf6" stroke-opacity="0.4"/>
+    <text x="523" y="231" text-anchor="middle" fill="#a99bff">139 configs</text>
+    <rect x="598" y="206" width="112" height="38" rx="19" fill="#f5b642" fill-opacity="0.12" stroke="#f5b642" stroke-opacity="0.4"/>
+    <text x="654" y="231" text-anchor="middle" fill="#f5b642">live panel</text>
+    <rect x="724" y="206" width="162" height="38" rx="19" fill="#34e5b0" fill-opacity="0.10" stroke="#34e5b0" stroke-opacity="0.35"/>
+    <text x="805" y="231" text-anchor="middle" fill="#34e5b0">localhost / VPS</text>
+  </g>
+
+  <!-- faux stat chips -->
+  <g font-family="JetBrains Mono, monospace" font-size="15" text-anchor="end">
+    <text x="1130" y="132" fill="#34e5b0">VALID 2</text>
+    <text x="1130" y="160" fill="#cbd5e1">INVALID 3</text>
+    <text x="1130" y="188" fill="#f87171">ERROR 1</text>
+    <text x="1130" y="216" fill="#8b7cf6">CPM 27.4</text>
+  </g>
+  <line x1="982" y1="112" x2="982" y2="228" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2"/>
+</svg>
