@@ -1,0 +1,15 @@
+{
+  "name": "huggingface — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://huggingface.co/settings/profile",
+  "success": {
+    "url_regex": "^https://huggingface\\.co/(settings|profile)"
+  },
+  "fail": {
+    "url_regex": "huggingface\\.co/(login|join|signin)"
+  },
+  "captures": [],
+  "retry": 1
+}

@@ -1,0 +1,15 @@
+{
+  "name": "kraken2 — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://pro.kraken.com/",
+  "success": {
+    "url_regex": "^https://pro\\.kraken\\.com/"
+  },
+  "fail": {
+    "url_regex": "(pro\\.)?kraken\\.com/(login|signin)"
+  },
+  "captures": [],
+  "retry": 1
+}

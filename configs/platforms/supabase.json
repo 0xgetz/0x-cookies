@@ -1,0 +1,15 @@
+{
+  "name": "supabase — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://supabase.com/dashboard",
+  "success": {
+    "url_regex": "^https://supabase\\.com/dashboard"
+  },
+  "fail": {
+    "url_regex": "supabase\\.com/(login|sign-in|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

@@ -1,0 +1,15 @@
+{
+  "name": "buildkite — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://buildkite.com/",
+  "success": {
+    "url_regex": "^https://buildkite\\.com/(dashboard|organizations)"
+  },
+  "fail": {
+    "url_regex": "buildkite\\.com/(login|signup|sign_in)"
+  },
+  "captures": [],
+  "retry": 1
+}

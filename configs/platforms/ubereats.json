@@ -1,0 +1,15 @@
+{
+  "name": "ubereats — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.ubereats.com/orders",
+  "success": {
+    "url_regex": "^https://(www\\.)?ubereats\\.com/(orders|account)"
+  },
+  "fail": {
+    "url_regex": "ubereats\\.com/(login|signin|auth)"
+  },
+  "captures": [],
+  "retry": 1
+}

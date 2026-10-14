@@ -7,13 +7,13 @@
 **Comprobador masivo de cookies y sesiones estilo OpenBullet — con Chromium real.**
 
 Comprueba en masa si tus cookies / inicios de sesión guardados siguen vivos en
-**139 plataformas**. A diferencia de los comprobadores HTTP simples, ejecuta un
+**189 plataformas**. A diferencia de los comprobadores HTTP simples, ejecuta un
 **Chromium headless real** (Playwright), así que sigue siendo preciso en sitios que
 siempre responden `HTTP 200` (Microsoft, redes sociales, SaaS, …).
 
 [![Python](https://img.shields.io/badge/python-3.9%2B-34e5b0?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Playwright](https://img.shields.io/badge/playwright-Chromium-8b7cf6?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
-[![Platforms](https://img.shields.io/badge/platforms-139-f5b642?style=flat-square)](#-plataformas-integradas)
+[![Platforms](https://img.shields.io/badge/platforms-189-f5b642?style=flat-square)](#-plataformas-integradas)
 [![License](https://img.shields.io/badge/license-MIT-34e5b0?style=flat-square)](../LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-8b7cf6?style=flat-square)](../CONTRIBUTING.md)
 [![Made by 0xgetz](https://img.shields.io/badge/by-0xgetz-9aa4b2?style=flat-square&logo=github)](https://github.com/0xgetz)
@@ -36,7 +36,7 @@ has iniciado sesión.
 - **Contextos aislados** — cada entrada corre en su propio contexto, las cookies nunca se
   filtran entre cuentas y un archivo muerto jamás parece válido.
 - **El fallo gana al éxito** — aterrizar en una página de login/error siempre es `invalid`.
-- **139 plataformas listas** — más un motor de configuración HTTP + navegador genérico.
+- **189 plataformas listas** — más un motor de configuración HTTP + navegador genérico.
 - **Panel de control web** — sube entradas/configs/proxies, start/pause/stop, estadísticas en vivo.
 - **Runner CLI** — el mismo motor, ideal para un VPS o cron.
 - **Pool de proxies** — rota y auto-bloquea al fallar (`http/https/socks4/socks5`).
@@ -73,7 +73,7 @@ python server.py --host 0.0.0.0 --port 8080
 
 1. **Inputs** — pega uno por línea, o sube un `.txt`.
    modo `userpass` → `user:pass`; modo `cookie` → el blob de cookie (o la ruta de un archivo).
-2. **Config** — pega JSON, elige un preset, o carga uno de las 139 configs de
+2. **Config** — pega JSON, elige un preset, o carga uno de las 189 configs de
    `configs/platforms/<nombre>.json`.
 3. **Proxies** *(opcional)* — uno por línea:
    `host:port`, `user:pass@host:port`, `scheme://host:port`
@@ -86,10 +86,10 @@ python server.py --host 0.0.0.0 --port 8080
 
 ## Plataformas integradas
 
-**139 configuraciones** se incluyen en [`configs/platforms/`](../configs/platforms),
+**189 configuraciones** se incluyen en [`configs/platforms/`](../configs/platforms),
 cubriendo social, email, nube, desarrollo, finanzas, streaming, compras y más — p. ej.
 `google` `microsoft` `github` `discord` `instagram` `tiktok` `netflix` `spotify`
-`openai` `claude` `notion` `aws` `binance` `paypal` `steam` …
+`openai` `claude` `notion` `sentry` `datadog` `supabase` `huggingface` `bybit` `revolut` `doordash` `strava` …
 
 Cada una es una comprobación `redirect` (el sitio rebota a usuarios anónimos) o `marker`
 (SPA: cotejada por selectores DOM válidos/ inválidos y marcadores del body). Regenera
@@ -177,7 +177,7 @@ Ver **[STRUCTURE.md](../STRUCTURE.md)** para el diagrama anotado completo.
 ├── server.py          panel de control (HTTP + WebSocket stats en vivo)
 ├── cli.py             runner headless
 ├── start.sh           lanzador de un paso (instala navegador + libs)
-├── gen_configs.py     genera las 139 configs de plataformas
+├── gen_configs.py     genera las 189 configs de plataformas
 ├── core/              config · engine · proxies
 ├── web/               UI del dashboard
 ├── configs/           ejemplo + configs por plataforma

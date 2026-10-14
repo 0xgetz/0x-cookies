@@ -1,6 +1,6 @@
 """
-Generate OpenBullet-style browser configs from the cookie-checker platform
-registry (139 platforms) so the same rules power both tools.
+Generate OpenBullet-style browser configs from the bundled platform registry
+(189 platforms) so the same rules power every part of the project.
 
 Usage:
     python gen_configs.py            # writes configs/platforms/*.json
@@ -12,12 +12,13 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE.parent / "cookie-checker"))
+sys.path.insert(0, str(HERE))
 
 try:
-    import checker  # type: ignore
+    from core import registry  # type: ignore
+    checker = registry  # PLATFORMS lives here
 except Exception as e:  # pragma: no cover
-    print("cookie-checker/checker.py not importable:", e)
+    print("core/registry.py not importable:", e)
     sys.exit(1)
 
 

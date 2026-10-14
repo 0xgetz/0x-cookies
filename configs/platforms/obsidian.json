@@ -1,0 +1,15 @@
+{
+  "name": "obsidian — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://obsidian.md/account",
+  "success": {
+    "url_regex": "^https://obsidian\\.md/(account|pricing|settings)"
+  },
+  "fail": {
+    "url_regex": "obsidian\\.md/(login|signin|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

@@ -1,0 +1,15 @@
+{
+  "name": "tutanota — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://mail.tutanota.com/",
+  "success": {
+    "url_regex": "^https://mail\\.tutanota\\.com/(mail|settings)"
+  },
+  "fail": {
+    "url_regex": "(login|signup|/login)"
+  },
+  "captures": [],
+  "retry": 1
+}

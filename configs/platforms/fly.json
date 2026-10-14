@@ -1,0 +1,15 @@
+{
+  "name": "fly — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://fly.io/dashboard",
+  "success": {
+    "url_regex": "^https://fly\\.io/(dashboard|apps)"
+  },
+  "fail": {
+    "url_regex": "fly\\.io/(login|signin|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

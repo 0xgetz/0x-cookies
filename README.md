@@ -6,13 +6,13 @@
 
 **OpenBullet-style bulk cookie & session checker — powered by real Chromium.**
 
-Bulk-check whether saved cookies / logins are still alive across **139 platforms**.
+Bulk-check whether saved cookies / logins are still alive across **189 platforms**.
 Unlike plain HTTP checkers, it drives a **real headless Chromium** (Playwright), so it
 stays accurate on sites that always answer `HTTP 200` (Microsoft, social, SaaS, …).
 
 [![Python](https://img.shields.io/badge/python-3.9%2B-34e5b0?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Playwright](https://img.shields.io/badge/playwright-Chromium-8b7cf6?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
-[![Platforms](https://img.shields.io/badge/platforms-139-f5b642?style=flat-square)](#-built-in-platforms)
+[![Platforms](https://img.shields.io/badge/platforms-189-f5b642?style=flat-square)](#-built-in-platforms)
 [![License](https://img.shields.io/badge/license-MIT-34e5b0?style=flat-square)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-8b7cf6?style=flat-square)](CONTRIBUTING.md)
 [![Made by 0xgetz](https://img.shields.io/badge/by-0xgetz-9aa4b2?style=flat-square&logo=github)](https://github.com/0xgetz)
@@ -34,7 +34,7 @@ redirect, and decides from the **final URL + DOM** whether you are actually logg
 - **Isolated contexts** — each input runs in its own browser context, so cookies never
   leak between accounts and a dead file can never look valid.
 - **Fail wins over success** — landing on a login/error page is always `invalid`.
-- **139 ready platforms** — plus a generic HTTP + browser config engine.
+- **189 ready platforms** — plus a generic HTTP + browser config engine.
 - **Web control panel** — upload inputs/configs/proxies, start/pause/stop, live stats.
 - **CLI runner** — same engine, perfect for a VPS or cron.
 - **Proxy pool** — rotate and auto-ban on failure (`http/https/socks4/socks5`).
@@ -71,7 +71,7 @@ python server.py --host 0.0.0.0 --port 8080
 
 1. **Inputs** — paste one per line, or upload a `.txt`.
    `userpass` mode → `user:pass`; `cookie` mode → the cookie blob (or a cookie-file path).
-2. **Config** — paste JSON, pick a preset, or load one of 139 configs from
+2. **Config** — paste JSON, pick a preset, or load one of 189 configs from
    `configs/platforms/<name>.json`.
 3. **Proxies** *(optional)* — one per line:
    `host:port`, `user:pass@host:port`, `scheme://host:port`
@@ -84,10 +84,10 @@ python server.py --host 0.0.0.0 --port 8080
 
 ## Built-in platforms
 
-**139 configurations** ship in [`configs/platforms/`](configs/platforms), covering
+**189 configurations** ship in [`configs/platforms/`](configs/platforms), covering
 social, email, cloud, developer, finance, streaming, shopping and more — e.g.
 `google` `microsoft` `github` `discord` `instagram` `tiktok` `netflix` `spotify`
-`openai` `claude` `notion` `aws` `binance` `paypal` `steam` …
+`openai` `claude` `notion` `sentry` `datadog` `supabase` `huggingface` `bybit` `revolut` `doordash` `strava` …
 
 Each is either a `redirect` check (the site bounces anonymous users) or a `marker`
 check (SPA: matched via valid/invalid DOM selectors and body markers). Regenerate the
@@ -175,7 +175,7 @@ See **[STRUCTURE.md](STRUCTURE.md)** for the full annotated diagram.
 ├── server.py          control panel (HTTP + WebSocket live stats)
 ├── cli.py             headless runner
 ├── start.sh           one-shot launcher (installs browser + libs)
-├── gen_configs.py     generate the 139 platform configs
+├── gen_configs.py     generate the 189 platform configs
 ├── core/              config · engine · proxies
 ├── web/               dashboard UI
 ├── configs/           example + per-platform configs

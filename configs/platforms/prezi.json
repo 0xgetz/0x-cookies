@@ -1,0 +1,15 @@
+{
+  "name": "prezi — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://prezi.com/dashboard/",
+  "success": {
+    "url_regex": "^https://prezi\\.com/(dashboard|present)"
+  },
+  "fail": {
+    "url_regex": "prezi\\.com/(login|signup|auth)"
+  },
+  "captures": [],
+  "retry": 1
+}

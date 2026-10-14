@@ -1,0 +1,15 @@
+{
+  "name": "meetup — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.meetup.com/home/",
+  "success": {
+    "url_regex": "^https://(www\\.)?meetup\\.com/(home|find|account)"
+  },
+  "fail": {
+    "url_regex": "meetup\\.com/(login|signup|register)"
+  },
+  "captures": [],
+  "retry": 1
+}

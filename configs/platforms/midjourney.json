@@ -1,0 +1,15 @@
+{
+  "name": "midjourney — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.midjourney.com/",
+  "success": {
+    "url_regex": "^https://(www\\.)?midjourney\\.com/(home|imagine|account)"
+  },
+  "fail": {
+    "url_regex": "midjourney\\.com/(login|signin|sign_in|auth)"
+  },
+  "captures": [],
+  "retry": 1
+}

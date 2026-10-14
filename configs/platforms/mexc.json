@@ -1,0 +1,15 @@
+{
+  "name": "mexc — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.mexc.com/",
+  "success": {
+    "url_regex": "^https://(www\\.)?mexc\\.com/(assets|user)"
+  },
+  "fail": {
+    "url_regex": "mexc\\.com/(login|signin|register)"
+  },
+  "captures": [],
+  "retry": 1
+}

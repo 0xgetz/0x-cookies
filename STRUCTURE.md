@@ -9,7 +9,7 @@ first. Below is the annotated layout and the runtime data-flow.
 ├──  server.py              🖥️  Control panel — HTTP API + WebSocket live stats
 ├──  cli.py                 ⌨️  Headless runner (VPS / cron) — same engine, no UI
 ├──  start.sh               🚀  One-shot launcher: installs browser + system libs, starts panel
-├──  gen_configs.py         🏭  Generates the 139 platform configs from the shared registry
+├──  gen_configs.py         🏭  Generates the 189 platform configs from the shared registry
 ├──  README.md              📘  Docs (this language) + 4 translations in docs/
 ├──  STRUCTURE.md           🗺️  This file
 ├──  CONTRIBUTING.md        🤝  How to add platforms / send PRs
@@ -18,7 +18,8 @@ first. Below is the annotated layout and the runtime data-flow.
 ├──  core/                  ⚙️  The engine (imported by both server.py and cli.py)
 │   ├──  config.py          ── OpenBullet-style config schema + validation
 │   ├──  engine.py          ── Job runner: http + browser, retry, captures, stats
-│   └──  proxies.py         ── Proxy parsing, rotation, auto-ban
+│   ├──  proxies.py         ── Proxy parsing, rotation, auto-ban
+│   └──  registry.py        ── 189-platform registry (probe URL + valid/invalid rules)
 │
 ├──  web/                   🎛️  Dashboard (single self-contained HTML, Tailwind CDN)
 │   └──  index.html         ── Live stats, log, hits, inputs/config/proxy tabs
@@ -26,7 +27,7 @@ first. Below is the annotated layout and the runtime data-flow.
 ├──  configs/               📦  Job definitions
 │   ├──  example_http.json  ── Raw HTTP request template
 │   ├──  example_cookie.json── Browser cookie template
-│   └──  platforms/         ── 139 ready per-platform configs (github.json, …)
+│   └──  platforms/         ── 189 ready per-platform configs (github.json, …)
 │
 ├──  data/                  💾  Output directory (git-ignored)
 │   ├──  hits.txt           ── valid results + captures

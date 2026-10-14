@@ -1,0 +1,15 @@
+{
+  "name": "udio — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.udio.com/",
+  "success": {
+    "url_regex": "^https://(www\\.)?udio\\.com/(create|library|me)"
+  },
+  "fail": {
+    "url_regex": "udio\\.com/(login|signin|sign_in)"
+  },
+  "captures": [],
+  "retry": 1
+}

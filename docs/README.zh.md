@@ -6,13 +6,13 @@
 
 **OpenBullet 风格的批量 Cookie 与会话检测器 —— 由真实 Chromium 驱动。**
 
-批量检测你保存的 Cookie / 登录状态在 **139 个平台** 上是否仍然有效。
+批量检测你保存的 Cookie / 登录状态在 **189 个平台** 上是否仍然有效。
 与普通的 HTTP 检测器不同，它运行 **真实的 headless Chromium**（Playwright），
 因此在那些始终返回 `HTTP 200` 的网站（微软、社交、SaaS 等）上依然准确。
 
 [![Python](https://img.shields.io/badge/python-3.9%2B-34e5b0?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Playwright](https://img.shields.io/badge/playwright-Chromium-8b7cf6?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
-[![Platforms](https://img.shields.io/badge/platforms-139-f5b642?style=flat-square)](#-内置平台)
+[![Platforms](https://img.shields.io/badge/platforms-189-f5b642?style=flat-square)](#-内置平台)
 [![License](https://img.shields.io/badge/license-MIT-34e5b0?style=flat-square)](../LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-8b7cf6?style=flat-square)](../CONTRIBUTING.md)
 [![Made by 0xgetz](https://img.shields.io/badge/by-0xgetz-9aa4b2?style=flat-square&logo=github)](https://github.com/0xgetz)
@@ -34,7 +34,7 @@
 - **隔离上下文** —— 每个输入都在独立的浏览器上下文中运行，Cookie 不会在账号间泄漏，
   失效的文件永远不会显示为有效。
 - **失败优先于成功** —— 只要落在登录/错误页面，结果一定为 `invalid`。
-- **139 个现成平台** —— 外加通用的 HTTP + 浏览器配置引擎。
+- **189 个现成平台** —— 外加通用的 HTTP + 浏览器配置引擎。
 - **Web 控制面板** —— 上传输入/配置/代理，启动/暂停/停止，实时统计。
 - **CLI 运行器** —— 同一引擎，非常适合 VPS 或定时任务。
 - **代理池** —— 失败时自动轮换与封禁（`http/https/socks4/socks5`）。
@@ -72,7 +72,7 @@ python server.py --host 0.0.0.0 --port 8080
 1. **Inputs** —— 每行一条粘贴，或上传 `.txt`。
    `userpass` 模式 → `user:pass`；`cookie` 模式 → Cookie 内容（或 Cookie 文件路径）。
 2. **Config** —— 粘贴 JSON、选择预设，或从 `configs/platforms/<名称>.json` 加载
-   139 个配置之一。
+   189 个配置之一。
 3. **Proxies** *（可选）* —— 每行一条：
    `host:port`、`user:pass@host:port`、`scheme://host:port`
    （`http` `https` `socks4` `socks5` `socks5h`）。自动轮换 + 自动封禁。
@@ -84,10 +84,10 @@ python server.py --host 0.0.0.0 --port 8080
 
 ## 内置平台
 
-[`configs/platforms/`](../configs/platforms) 中内置 **139 个配置**，覆盖社交、邮箱、
+[`configs/platforms/`](../configs/platforms) 中内置 **189 个配置**，覆盖社交、邮箱、
 云服务、开发者、金融、流媒体、购物等 —— 例如
 `google` `microsoft` `github` `discord` `instagram` `tiktok` `netflix` `spotify`
-`openai` `claude` `notion` `aws` `binance` `paypal` `steam` 等。
+`openai` `claude` `notion` `sentry` `datadog` `supabase` `huggingface` `bybit` `revolut` `doordash` `strava` 等。
 
 每个配置要么是 `redirect` 检测（网站会弹开匿名用户），要么是 `marker` 检测
 （SPA：通过有效/无效的 DOM 选择器和页面标记来匹配）。重新生成整套配置：
@@ -174,7 +174,7 @@ python cli.py --config configs/platforms/github.json --inputs cookies/ \
 ├── server.py          控制面板（HTTP + 实时统计 WebSocket）
 ├── cli.py             headless 运行器
 ├── start.sh           一键启动（安装浏览器 + 系统库）
-├── gen_configs.py     生成 139 个平台配置
+├── gen_configs.py     生成 189 个平台配置
 ├── core/              config · engine · proxies
 ├── web/               仪表盘 UI
 ├── configs/           示例 + 各平台配置

@@ -1,0 +1,15 @@
+{
+  "name": "evernote — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.evernote.com/Home.action",
+  "success": {
+    "url_regex": "^https://(www\\.)?evernote\\.com/(Home|client)"
+  },
+  "fail": {
+    "url_regex": "evernote\\.com/(Login|login)"
+  },
+  "captures": [],
+  "retry": 1
+}

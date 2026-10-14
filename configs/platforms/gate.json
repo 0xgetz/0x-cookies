@@ -1,0 +1,15 @@
+{
+  "name": "gate — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.gate.io/myaccount",
+  "success": {
+    "url_regex": "^https://(www\\.)?gate\\.io/(myaccount|account)"
+  },
+  "fail": {
+    "url_regex": "gate\\.io/(login|signin|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}

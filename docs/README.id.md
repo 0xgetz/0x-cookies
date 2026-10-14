@@ -6,14 +6,14 @@
 
 **Pengecek cookie & sesi massal bergaya OpenBullet — ditenagai Chromium sungguhan.**
 
-Cek massal apakah cookie / login tersimpan masih hidup di **139 platform**.
+Cek massal apakah cookie / login tersimpan masih hidup di **189 platform**.
 Berbeda dari pengecek HTTP biasa, tool ini menjalankan **Chromium headless sungguhan**
 (Playwright), jadi tetap akurat di situs yang selalu menjawab `HTTP 200`
 (Microsoft, sosial media, SaaS, dll).
 
 [![Python](https://img.shields.io/badge/python-3.9%2B-34e5b0?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Playwright](https://img.shields.io/badge/playwright-Chromium-8b7cf6?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
-[![Platforms](https://img.shields.io/badge/platforms-139-f5b642?style=flat-square)](#-platform-bawaan)
+[![Platforms](https://img.shields.io/badge/platforms-189-f5b642?style=flat-square)](#-platform-bawaan)
 [![License](https://img.shields.io/badge/license-MIT-34e5b0?style=flat-square)](../LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-8b7cf6?style=flat-square)](../CONTRIBUTING.md)
 [![Made by 0xgetz](https://img.shields.io/badge/by-0xgetz-9aa4b2?style=flat-square&logo=github)](https://github.com/0xgetz)
@@ -36,7 +36,7 @@ benar-benar login.
 - **Context terisolasi** — tiap input jalan di browser-context sendiri, cookie tidak
   bocor antar akun dan file mati tak akan pernah terlihat valid.
 - **Gagal menang atas sukses** — mendarat di halaman login/error selalu `invalid`.
-- **139 platform siap pakai** — plus engine config HTTP + browser generik.
+- **189 platform siap pakai** — plus engine config HTTP + browser generik.
 - **Control panel web** — upload input/config/proxy, start/pause/stop, statistik live.
 - **CLI runner** — engine yang sama, pas untuk VPS atau cron.
 - **Proxy pool** — rotasi dan auto-ban saat gagal (`http/https/socks4/socks5`).
@@ -73,7 +73,7 @@ python server.py --host 0.0.0.0 --port 8080
 
 1. **Inputs** — tempel satu per baris, atau upload `.txt`.
    mode `userpass` → `user:pass`; mode `cookie` → blob cookie (atau path file cookie).
-2. **Config** — tempel JSON, pilih preset, atau muat salah satu dari 139 config di
+2. **Config** — tempel JSON, pilih preset, atau muat salah satu dari 189 config di
    `configs/platforms/<nama>.json`.
 3. **Proxies** *(opsional)* — satu per baris:
    `host:port`, `user:pass@host:port`, `scheme://host:port`
@@ -86,10 +86,10 @@ python server.py --host 0.0.0.0 --port 8080
 
 ## Platform bawaan
 
-**139 konfigurasi** ada di [`configs/platforms/`](../configs/platforms), mencakup
+**189 konfigurasi** ada di [`configs/platforms/`](../configs/platforms), mencakup
 sosial, email, cloud, developer, keuangan, streaming, belanja, dan lainnya — mis.
 `google` `microsoft` `github` `discord` `instagram` `tiktok` `netflix` `spotify`
-`openai` `claude` `notion` `aws` `binance` `paypal` `steam` …
+`openai` `claude` `notion` `sentry` `datadog` `supabase` `huggingface` `bybit` `revolut` `doordash` `strava` …
 
 Tiap config adalah cek `redirect` (situs memantulkan user anonim) atau cek `marker`
 (SPA: dicocokkan lewat selector DOM valid/invalid dan penanda body). Regenerate semua:
@@ -176,7 +176,7 @@ Lihat **[STRUCTURE.md](../STRUCTURE.md)** untuk diagram lengkap beranotasi.
 ├── server.py          control panel (HTTP + WebSocket statistik live)
 ├── cli.py             runner headless
 ├── start.sh           launcher sekali-jalan (install browser + libs)
-├── gen_configs.py     generate 139 config platform
+├── gen_configs.py     generate 189 config platform
 ├── core/              config · engine · proxies
 ├── web/               UI dashboard
 ├── configs/           contoh + config per-platform

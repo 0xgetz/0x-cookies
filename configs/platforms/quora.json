@@ -1,0 +1,15 @@
+{
+  "name": "quora — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.quora.com/",
+  "success": {
+    "url_regex": "^https://(www\\.)?quora\\.com/"
+  },
+  "fail": {
+    "url_regex": "quora\\.com/(login|signin)"
+  },
+  "captures": [],
+  "retry": 1
+}

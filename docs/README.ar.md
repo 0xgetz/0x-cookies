@@ -7,13 +7,13 @@
 **فاحص كوكيز وجلسات جماعي على طريقة OpenBullet — مدعوم بـ Chromium حقيقي.**
 
 افحص بشكل جماعي ما إذا كانت الكوكيز / تسجيلات الدخول المحفوظة لا تزال حيّة على
-**139 منصة**. على عكس فاحصات HTTP العادية، يشغّل هذا الأداة **Chromium headless حقيقيًا**
+**189 منصة**. على عكس فاحصات HTTP العادية، يشغّل هذا الأداة **Chromium headless حقيقيًا**
 (عبر Playwright)، لذا يبقى دقيقًا على المواقع التي تُرجع دائمًا `HTTP 200`
 (مايكروسوفت، وسائل التواصل، خدمات SaaS، …).
 
 [![Python](https://img.shields.io/badge/python-3.9%2B-34e5b0?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Playwright](https://img.shields.io/badge/playwright-Chromium-8b7cf6?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
-[![Platforms](https://img.shields.io/badge/platforms-139-f5b642?style=flat-square)](#-المنصات-المدمجة)
+[![Platforms](https://img.shields.io/badge/platforms-189-f5b642?style=flat-square)](#-المنصات-المدمجة)
 [![License](https://img.shields.io/badge/license-MIT-34e5b0?style=flat-square)](../LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-8b7cf6?style=flat-square)](../CONTRIBUTING.md)
 [![Made by 0xgetz](https://img.shields.io/badge/by-0xgetz-9aa4b2?style=flat-square&logo=github)](https://github.com/0xgetz)
@@ -37,7 +37,7 @@
 - **سياقات معزولة** — كل مُدخَل يعمل في سياق متصفح خاص به، فلا تتسرب الكوكيز بين
   الحسابات، ولا يظهر ملف ميت كصالح أبدًا.
 - **الفشل يتغلب على النجاح** — الهبوط على صفحة تسجيل دخول/خطأ يعني دائمًا `invalid`.
-- **139 منصة جاهزة** — إضافةً إلى محرك إعدادات HTTP + متصفح عام.
+- **189 منصة جاهزة** — إضافةً إلى محرك إعدادات HTTP + متصفح عام.
 - **لوحة تحكم ويب** — ارفع المُدخلات/الإعدادات/البروكسيات، start/pause/stop، وإحصاءات حيّة.
 - **مشغّل CLI** — المحرك نفسه، مثالي لخادم VPS أو المهام المجدولة.
 - **مجموعة بروكسي** — تدوير وحظر تلقائي عند الفشل (`http/https/socks4/socks5`).
@@ -74,7 +74,7 @@ python server.py --host 0.0.0.0 --port 8080
 
 1. **Inputs** — الصق واحدًا في كل سطر، أو ارفع ملف `.txt`.
    وضع `userpass` → `user:pass`؛ وضع `cookie` → محتوى الكوكي (أو مسار ملف الكوكي).
-2. **Config** — الصق JSON، اختر إعدادًا جاهزًا، أو حمّل أحد الإعدادات الـ139 من
+2. **Config** — الصق JSON، اختر إعدادًا جاهزًا، أو حمّل أحد الإعدادات الـ189 من
    `configs/platforms/<الاسم>.json`.
 3. **Proxies** *(اختياري)* — واحد في كل سطر:
    `host:port`، `user:pass@host:port`، `scheme://host:port`
@@ -87,10 +87,10 @@ python server.py --host 0.0.0.0 --port 8080
 
 ## المنصات المدمجة
 
-تأتي **139 إعدادًا** في [`configs/platforms/`](../configs/platforms)، وتغطي التواصل
+تأتي **189 إعدادًا** في [`configs/platforms/`](../configs/platforms)، وتغطي التواصل
 والبريد والسحابة والمطوّرين والمالية والبث والتسوّق وغيرها — مثل
 `google` `microsoft` `github` `discord` `instagram` `tiktok` `netflix` `spotify`
-`openai` `claude` `notion` `aws` `binance` `paypal` `steam` …
+`openai` `claude` `notion` `sentry` `datadog` `supabase` `huggingface` `bybit` `revolut` `doordash` `strava` …
 
 كل إعداد إما فحص `redirect` (الموقع يردّ المستخدم المجهول) أو فحص `marker`
 (SPA: يُطابَق عبر محدّدات DOM صالحة/غير صالحة وعلامات في الـ body). أعد توليد المجموعة:
@@ -177,7 +177,7 @@ python cli.py --config configs/platforms/github.json --inputs cookies/ \
 ├── server.py          لوحة التحكم (HTTP + WebSocket إحصاءات حيّة)
 ├── cli.py             مشغّل headless
 ├── start.sh           مشغّل بخطوة واحدة (يثبّت المتصفح والمكتبات)
-├── gen_configs.py     يولّد إعدادات الـ139 منصة
+├── gen_configs.py     يولّد إعدادات الـ189 منصة
 ├── core/              config · engine · proxies
 ├── web/               واجهة اللوحة
 ├── configs/           أمثلة + إعدادات لكل منصة

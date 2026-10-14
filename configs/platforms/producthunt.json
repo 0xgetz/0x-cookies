@@ -1,0 +1,15 @@
+{
+  "name": "producthunt — cookie/session check",
+  "author": "0x Cookies",
+  "type": "browser",
+  "input_format": "line",
+  "url": "https://www.producthunt.com/",
+  "success": {
+    "url_regex": "^https://(www\\.)?producthunt\\.com/"
+  },
+  "fail": {
+    "url_regex": "producthunt\\.com/(login|signup)"
+  },
+  "captures": [],
+  "retry": 1
+}
